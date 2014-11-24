@@ -1,6 +1,5 @@
 <?php
 	require_once "/var/ww2/db/db.php";
-	header('Content-Type: application/json');
 	
 	$response = "Processing Error";
 	
@@ -20,7 +19,21 @@
 		if($result->num_rows == 1){
 			$response = 'success';
 			session_start();
-			setcookie('nfd_sid',session_id(),time()+3600 * 24 * 30);
+			
+			if(isset($_POST['remember'])){
+				setcookie('nfd_sid',session_id(),time()+3600 * 24 * 30,'/','.phantastyc.tk');
+			}else{
+				setcookie('nfd_sid',session_id(),0,'/','.phantastyc.tk');
+			}
+			$data = $result->fetch_assoc();
+			
+			$_SESSION['uid'] = $data['uid'];
+			$_SESSION['fname'] = $data['first_name'];
+			$_SESSION['lname'] = $data['last_name'];
+			$_SESSION['title'] = $data['title'];
+			$_SESSION['uname'] = $data['username'];
+			$_SESSION['email'] = $data['email'];
+			
 		}else{
 			$response = 'login failed';
 		}
