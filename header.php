@@ -1,12 +1,6 @@
-<?php
-	$logged_in = isset($_COOKIE['nfd_sid']);
-	if($logged_in){
-		session_id($_COOKIE['nfd_sid']);
-		session_start();
-	}
-?>
+<?php require_once "uac.php"; ?>
 
-<script src="/nfd/scripts/js/jquery-2.1.1.min.js"></script>
+<script src="/nfd/scripts/js/jquery.min.js"></script>
 <script src="/nfd/scripts/js/jquery.form.min.js"></script>
 
 <script>
@@ -16,11 +10,11 @@ $(document).ready(function(e) {
 			beforeSend:function(){
 				//loading screen to be implemented
 			},
-			complete:function(response){
+			success:function(response){
 				console.log(response);
-				if(response.responseText == 'success'){
+				if(response == 'success'){
 					location.reload(true);
-				}else if(response.responseText == 'login failed'){
+				}else if(response == 'login failed'){
 					$('#ipass').val("");
 					$('#msg').text("You shall not pass.");
 				}

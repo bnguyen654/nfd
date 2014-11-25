@@ -1,16 +1,13 @@
-<?php
+	<?php
 	require_once "/var/ww2/db/db.php";
 	
 	$response = "Processing Error";
 	
-	$user = "";
-	$pass = "";
-	
 	if(isset($_POST['user']) && isset($_POST['pass'])){
-		$user = $_POST['user'];
-		$pass = sha1($_POST['pass']);
-		
 		$db = connect_db("nfd");
+		
+		$user = $db->real_escape_string($_POST['user']);
+		$pass = sha1($_POST['pass']);
 		
 		$sql = "SELECT * FROM users WHERE (username = '$user' OR email = '$user') AND password = '$pass'";
 		$result = $db->query($sql);
@@ -33,6 +30,7 @@
 			$_SESSION['title'] = $data['title'];
 			$_SESSION['uname'] = $data['username'];
 			$_SESSION['email'] = $data['email'];
+			$_SESSION['sa'] = $data['superAdmin'];
 			
 		}else{
 			$response = 'login failed';

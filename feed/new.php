@@ -1,5 +1,5 @@
 <?php
-	require_once "../header.php";
+	require_once "../uac.php";
 	require_once "/var/ww2/db/db.php";
 	
 	if($logged_in){
@@ -7,15 +7,17 @@
 			$db = connect_db("nfd");
 			
 			$uid = $_SESSION['uid'];
-			$title = $_POST['title'];
-			$content = $_POST['content'];
+			$title = $db->real_escape_string($_POST['title']);
+			$content = $db->real_escape_string($_POST['content']);
 			
-			$sql = "INSERT INTO posts (uid, title, content) VALUES ($uid, $title, $content)";
-			
+			$sql = "INSERT INTO posts (uid, title, content) VALUES ($uid, '$title', '$content')";
+						
 			$db->query($sql);
-			$db->close();
-			
-			echo 'success';
+						
+			if($db->affected_rows == 1) echo 'success';
+			else echo 'unknown error inserting data';
 		} else echo 'bad data';
 	}else echo 'not logged in';
+	
+	$db->close();
 ?>
