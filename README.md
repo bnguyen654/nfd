@@ -19,12 +19,12 @@ nfd
 1. CSS (yeah lots of it)
 2. User Features
  * SuperAdmin
-  - Add/Remove Users
-  - Change things
+   - Add/Remove Users
+   - Change things
  * Profile
-  - Avatar
-  - Bio
-  - Page to view
+   - Avatar
+   - Bio
+   - Page to view
  * Permission Levels
  * Member List
 3. Posts
