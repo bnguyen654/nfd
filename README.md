@@ -1,20 +1,25 @@
 nfd
 ===
-Current Features
+###Current Features
 1. Log in
-2. View Posts
-3. Delete Posts
-4. Edit Posts
+2. Post
+ * View
+ * Edit
+ * Delete
 
 ###WIP
 1. Bug Fixes (Always)
 2. Security
-  * Ensure log in
+  * Ensure log in - already implemented but probably has holes
 3. Code cleanup
   * Get rid of debug
   * More effeciency and consistency
 
 ###Planned
 1. CSS (yeah lots of it)
-2. User Profiles
-3. User Administration
+2. User Features
+ * SuperAdmin
+  - Add/Remove Users
+  - Change things
+ * Profile
+ * Permission Levels
