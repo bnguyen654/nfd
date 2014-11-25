@@ -22,4 +22,11 @@ nfd
   - Add/Remove Users
   - Change things
  * Profile
+  - Avatar
+  - Bio
+  - Page to view
  * Permission Levels
+ * Member List
+3. Posts
+ * Comments
+ * Revision History
