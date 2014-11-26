@@ -21,12 +21,11 @@ nfd
  * SuperAdmin
    - Add/Remove Users
     - Change things
- * Profile
+ * Admin Profile
    - Avatar
-    - Bio
-     - Page to view
+   - Bio
+   - Page to view
  * Permission Levels
  * Member List
 3. Posts
- * Comments
  * Revision History
