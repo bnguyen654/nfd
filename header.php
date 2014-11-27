@@ -11,6 +11,8 @@
 <link href="resources/css/jquery-ui.structure.min.css" rel="stylesheet"/>
 <link href="resources/css/jquery-ui.theme.min.css" rel="stylesheet"/>
 
+<link href="resources/css/posts.css" rel="stylesheet"/>
+
 
 <div id="ucp">
 <p id="msg"></p>

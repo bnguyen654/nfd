@@ -9,11 +9,12 @@ function reloadp(){
 		dataType:"html",
 		success:function(response){
 			$('#feed-wrapper').html(response);
+			initDynamicElements();
 		}
 	});
 }
 
-$(function() {
+function initDynamicElements(){
 	$(document).on('submit','#new-post',function(){
 		$(this).ajaxSubmit({
 			success:function(response){
@@ -94,34 +95,7 @@ $(function() {
 				editSucc = false;
 				editPid = 0;
 			}
-		});
-		/**var form = dialog.find( "form" ).on( "submit", function( event ) {
-			event.preventDefault();
-			
-			var title = $('#title-edit-box').val();
-			var content = $('#content-edit-box').val();
-			
-			var data = {
-			ntitle:title,
-			ncontent:content,
-			pid:pid
-			}
-			$.ajax({
-				url:'/nfd/resources/php/edit.php?modify',
-				data:data,
-				dataType:"text",
-				type:"POST",
-				success:function(response){
-					if(response == 'modified'){
-						reloadp();
-					}else{
-						alert("The server rejected you.");
-					}
-				}
-			});
-			return false;
-	});*/
-	
+		});	
 	$(document).on('click','.edit-button',function(){
 		editPid = $(this).parent().parent().data('pid');
 		dialog.dialog("open");
@@ -134,7 +108,10 @@ $(function() {
 		$('#title-edit-box').val(t);
 		$('#content-edit-box').val(c);
 	});
-	
+	$('time.post-time').timeago();
+}
+
+$(function() {
 	reloadp();
 });
 

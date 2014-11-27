@@ -1,0 +1,33 @@
+.post-wrapper{
+	width:400px;
+	display:inline-block;
+	border:#000 solid 1px;
+}
+.post-header{
+	overflow:hidden;
+	border-bottom:#006 solid 2px;
+	background-color:#CCC;
+}
+.pro-pic{
+	margin:5px;
+	display:inline-block;
+	vertical-align:top
+}
+.post-info{
+	display:inline-block;
+	margin:5px;
+	vertical-align:top;
+}
+.post-info p{
+	margin:0px;
+}
+#title{
+	clear:both;
+	text-align:center;
+}
+.post-wrapper{
+	margin:5px;
+}
+.post-wrapper > p{
+	margin:10px;
+}
