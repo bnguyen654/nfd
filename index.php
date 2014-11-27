@@ -28,6 +28,7 @@
             <fieldset>
                 <label for="name">Title</label>
                 <input type="text" name="ntitle" id="title-edit-box">
+                <br />
                 <label for="email">Content</label>
                 <textarea name="ncontent" id="content-edit-box"></textarea>
             </fieldset>

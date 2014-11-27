@@ -3,6 +3,7 @@
 	if($logged_in){
 		session_id($_COOKIE['nfd_sid']);
 		session_start();
+		setcookie('nfd_sid',session_id(),time()+3600 * 24 * 30,'/','.phantastyc.tk'); //so expiry gets extended each time
 	}
 		function getData($uid,$db){
 		$sql = "SELECT * FROM users WHERE uid=$uid";

@@ -48,8 +48,8 @@ $(function() {
 	
 	 var dialog = $( "#dialog-form" ).dialog({
 		autoOpen: false,
-		height: 300,
-		width: 350,
+		height: 400,
+		width: 450,
 		position:{
 			at:'center',
 			my:'center',
