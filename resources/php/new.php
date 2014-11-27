@@ -1,5 +1,5 @@
 <?php
-	require_once "../uac.php";
+	require_once "uac.php";
 	require_once "/var/ww2/db/db.php";
 	
 	if($logged_in){
@@ -15,7 +15,7 @@
 			$db->query($sql);
 						
 			if($db->affected_rows == 1) echo 'success';
-			else echo 'unknown error inserting data';
+			else echo 'db error';
 		} else echo 'bad data';
 	}else echo 'not logged in';
 	

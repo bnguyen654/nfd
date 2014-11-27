@@ -5,7 +5,6 @@ $(document).ready(function(e) {
 				//loading screen to be implemented
 			},
 			success:function(response){
-				console.log(response);
 				if(response == 'success'){
 					location.reload(true);
 				}else{
@@ -22,7 +21,6 @@ $(document).ready(function(e) {
 	$('#logout-form').submit(function(){
 		$(this).ajaxSubmit({
 			complete:function(response){
-				console.log(response);
 				if(response.responseText == 'success'){
 					location.reload();
 				}else{

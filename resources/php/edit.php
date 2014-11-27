@@ -1,6 +1,6 @@
 <?php
 	require_once "/var/ww2/db/db.php";
-	require_once "../uac.php";
+	require_once "uac.php";
 	
 	$db = connect_db("nfd");
 	
@@ -32,14 +32,14 @@
 				if($db->affected_rows == 1) echo 'modified';
 				else echo 'modify error';
 				}else{
-					echo 'hunaaiii where da data';
+					echo 'bad data';
 				}
 			}else{
-				echo 'why you no select action';
+				echo 'no action';
 			}
 		}		
 	}else{
-		echo 'No post.';
+		echo 'no pid';
 	}
 	$db->close();
 ?>

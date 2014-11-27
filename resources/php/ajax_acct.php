@@ -1,5 +1,6 @@
 <?php
-
+	require_once "/var/ww2/db/db.php";
+	
 	if(isset($_GET['logout'])){
 		session_id($_COOKIE['nfd_sid']);
 		session_start();
