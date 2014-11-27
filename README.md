@@ -9,9 +9,7 @@ nfd
 
 ###WIP
 1. Bug Fixes (Always)
-2. Security
-  * Ensure log in - already implemented but probably has holes
-3. Code cleanup
+2. Code cleanup
   * Get rid of debug
   * More effeciency and consistency
 
@@ -25,7 +23,6 @@ nfd
     - Avatar
     - Bio
     - Page to view
- * Permission Levels
  * Member List
 3. Posts
  * Revision History
