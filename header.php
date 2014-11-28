@@ -34,14 +34,13 @@
 <?php
 	}else{
 ?>
-	<p>Welcome <?php echo $_SESSION['uname']; ?>!</p>
+	<h2>Welcome <?php echo $_SESSION['uname']; ?>!</h2>
     <form id="logout-form" action="/nfd/resources/php/ajax_acct.php?logout">
     	<input type="submit" value="Logout">
     </form>
-    Actions
+    <h4>Nav</h4>
     <ul id="actions">
-    	<li><a href="/nfd/feed">Admin Feed</a></li>
-        <li><a href="/nfd/announcements">Public Posts</a></li>
+    	<li><a href="/nfd/admin">Admin</a></li>
     </ul>
 <?php
 	}

@@ -5,7 +5,7 @@ var editSucc = false;
 function reloadp(){
 	$('#feed-wrapper').empty();
 	$.ajax({
-		url:'/nfd/resources/php/get.php',
+		url:'/nfd/resources/php/ajax_posts.php?get',
 		dataType:"html",
 		success:function(response){
 			$('#feed-wrapper').html(response);
@@ -15,7 +15,9 @@ function reloadp(){
 }
 
 function initDynamicElements(){
-	$(document).on('submit','#new-post',function(){
+	recursiveUnbind(document);
+	//$(document).on('submit','#new-post',function(){
+	$('.edit-button').click(function() {
 		$(this).ajaxSubmit({
 			success:function(response){
 				if(response == 'success'){
@@ -27,12 +29,13 @@ function initDynamicElements(){
 		return false;
 	});
 	
-	$(document).on('click','.delete-button',function(){
+	//$(document).on('click','.delete-button',function(){
+	$('.delete-button').click(function() {
 		console.log('Delete triggered.');
 		var pid = $(this).parent().parent().data('pid');
 		if(confirm("Continuing will delete this post.")){
 			$.ajax({
-				url:'/nfd/resources/php/edit.php?delete',
+				url:'/nfd/resources/php/ajax_posts.php?delete',
 				data:{pid:pid},
 				type:"POST",
 				dataType:"text",
@@ -96,7 +99,8 @@ function initDynamicElements(){
 				editPid = 0;
 			}
 		});	
-	$(document).on('click','.edit-button',function(){
+	//$(document).on('click','.edit-button',function(){
+	$('.edit-button').click(function() {
 		editPid = $(this).parent().parent().data('pid');
 		dialog.dialog("open");
 		
@@ -109,6 +113,14 @@ function initDynamicElements(){
 		$('#content-edit-box').val(c);
 	});
 	$('time.post-time').timeago();
+}
+
+function recursiveUnbind(jElement) {
+	$(jElement).unbind();
+	$(jElement).removeAttr('onclick');
+	$(jElement).children().each(function(){
+		recursiveUnbind(this);
+	});
 }
 
 $(function() {

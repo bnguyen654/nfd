@@ -47,6 +47,8 @@
 		}else{
 			echo 'incomplete data';
 		}
+	}elseif(isset($_GET['list'])){
+			
 	}else{
 		echo 'no action';
 	}
