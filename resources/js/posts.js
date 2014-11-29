@@ -15,21 +15,8 @@ function reloadp(){
 }
 
 function initDynamicElements(){
-	recursiveUnbind(document);
-	//$(document).on('submit','#new-post',function(){
-	$('.edit-button').click(function() {
-		$(this).ajaxSubmit({
-			success:function(response){
-				if(response == 'success'){
-					$('#new-post').trigger('reset');
-					reloadp();
-				}
-			}
-		});
-		return false;
-	});
+	recursiveUnbind('#feed-wrapper');
 	
-	//$(document).on('click','.delete-button',function(){
 	$('.delete-button').click(function() {
 		console.log('Delete triggered.');
 		var pid = $(this).parent().parent().data('pid');
@@ -40,6 +27,7 @@ function initDynamicElements(){
 				type:"POST",
 				dataType:"text",
 				success:function(response){
+					console.log(response);
 					if(response == 'deleted'){
 						reloadp();
 					}else{
@@ -99,15 +87,14 @@ function initDynamicElements(){
 				editPid = 0;
 			}
 		});	
-	//$(document).on('click','.edit-button',function(){
 	$('.edit-button').click(function() {
 		editPid = $(this).parent().parent().data('pid');
 		dialog.dialog("open");
 		
 		var id = "post" + editPid;
 				
-		var t = $('#' + id + ' > .post-header > #title').text();
-		var c = $('#' + id + ' > #content').text();
+		var t = $('#' + id + ' > .post-header > #title').html();
+		var c = $('#' + id + ' > #content').html();
 		
 		$('#title-edit-box').val(t);
 		$('#content-edit-box').val(c);
@@ -125,5 +112,18 @@ function recursiveUnbind(jElement) {
 
 $(function() {
 	reloadp();
+
+	$('#new-post').submit(function() {
+		$(this).ajaxSubmit({
+			success:function(response){
+				if(response == 'success'){
+					$('#new-post').trigger('reset');
+					reloadp();
+				}
+			}
+		});
+		return false;
+	});
+
 });
 

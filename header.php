@@ -7,11 +7,11 @@
 
 <script src="/nfd/resources/js/uac.js"></script>
 
-<link href="resources/css/jquery-ui.min.css" rel="stylesheet"/>
-<link href="resources/css/jquery-ui.structure.min.css" rel="stylesheet"/>
-<link href="resources/css/jquery-ui.theme.min.css" rel="stylesheet"/>
+<link href="/nfd/resources/css/jquery-ui.min.css" rel="stylesheet"/>
+<link href="/nfd/resources/css/jquery-ui.structure.min.css" rel="stylesheet"/>
+<link href="/nfd/resources/css/jquery-ui.theme.min.css" rel="stylesheet"/>
 
-<link href="resources/css/posts.css" rel="stylesheet"/>
+<link href="/nfd/resources/css/posts.css" rel="stylesheet"/>
 
 
 <div id="ucp">

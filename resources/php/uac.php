@@ -5,7 +5,7 @@
 		session_start();
 		setcookie('nfd_sid',session_id(),time()+3600 * 24 * 30,'/','.phantastyc.tk'); //so expiry gets extended each time
 	}
-		function getData($uid,$db){
+	function getData($uid,$db){
 		$sql = "SELECT * FROM users WHERE uid=$uid";
 		$sql2 = "SELECT * FROM user_profiles WHERE uid=$uid";
 		$result = $db->query($sql);

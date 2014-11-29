@@ -9,7 +9,7 @@ $(document).ready(function(e) {
 					location.reload(true);
 				}else{
 					$('#ipass').val("");
-					$('#msg').text("You shall not pass.");
+					$('#msg').text("Login failed.");
 				}
 			},
 			method:'POST',
@@ -24,7 +24,7 @@ $(document).ready(function(e) {
 				if(response.responseText == 'success'){
 					location.reload();
 				}else{
-					$('#msg').text('There is no exit.');
+					$('#msg').text('Error logging out.');
 				}
 			}
 		});
