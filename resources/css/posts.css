@@ -1,33 +1,50 @@
 .post-wrapper{
-	width:400px;
+	width:25em;
+	margin:1.25em;
 	display:inline-block;
-	border:#000 solid 1px;
 }
+
 .post-header{
-	overflow:hidden;
-	border-bottom:#006 solid 2px;
-	background-color:#CCC;
+	height:4.375em;
+	width:25em;
+	margin-bottom:0;
+	float:left;
 }
-.pro-pic{
-	margin:5px;
+
+.category, .edit-button{
+	color:white;
 	display:inline-block;
-	vertical-align:top
+	float:left;
+	margin:0.625em;
 }
-.post-info{
+
+.timestamp, .delete-button{
+	color:white;
 	display:inline-block;
-	margin:5px;
-	vertical-align:top;
+	float:right;
+	margin:0.625em;
 }
-.post-info p{
-	margin:0px;
-}
-#title{
-	clear:both;
+
+.title{
+	color:white;
 	text-align:center;
+	clear:both;
+	margin:0.625em;
 }
-.post-wrapper{
-	margin:5px;
+
+.content-wrapper{
+	margin-top:0;
+	height:35.938em;
+	width:25em;
+	background-color:white;
+	float:left;
 }
-.post-wrapper > p{
-	margin:10px;
+
+.content{
+	margin:0.625em;
+}
+
+#title-edit-box,#content-edit-box{
+	clear:both;
+	width:75em;
 }

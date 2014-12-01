@@ -4,27 +4,22 @@
 <html>
 <head>
 <title>NFD</title>
-<script src="resources/js/posts.js"></script>
 </head>
 
 <body>
 <?php
 	if($logged_in){
 ?>
-	<div id="npost-wrapper">
-    	<form id="new-post" method="post" action="/nfd/resources/php/ajax_posts.php?new">
-        	<p>New Post</p>
-            <label for="title">Post Title</label>
-            <input name="title" id="ititle">
-            <br />
-            <label for="content">Post Content</label>
-            <textarea name="content" id="icontent"></textarea>
-            <br />
-            <input type="submit" value="Post">
+	<div id="dialog-new">
+    	<form id="new-post-form" method="post" action="/nfd/resources/php/ajax_posts.php?new">
+            <label for="title">Title</label>
+            <input name="title" id="new-title">
+            <label for="content">Content</label>
+            <textarea name="content" id="new-content"></textarea>
         </form>
     </div>
-    <div id="dialog-form" title="Edit Post">
-        <form method="post" action="resources/php/ajax_posts.php?modify" id="edit-form">
+    <div id="dialog-edit" title="Edit Post">
+        <form method="post" action="resources/php/ajax_posts.php?modify">
             <fieldset>
                 <label for="name">Title</label>
                 <input type="text" name="ntitle" id="title-edit-box">
@@ -33,7 +28,7 @@
                 <textarea name="ncontent" id="content-edit-box"></textarea>
             </fieldset>
         </form>
-</div>
+    </div>
  <?php
  	}
  ?>

@@ -5,8 +5,6 @@
 	$db = connect_db("nfd");
 	
 	if(isset($_GET['logout'])){
-		session_id($_COOKIE['nfd_sid']);
-		session_start();
 		session_destroy();
 		unset($_COOKIE['nfd_sid']);
 		setcookie('nfd_sid','',time()-3600,'/','.phantastyc.tk');
@@ -38,7 +36,6 @@
 				$_SESSION['uid'] = $data['uid'];
 				$_SESSION['fname'] = $data['first_name'];
 				$_SESSION['lname'] = $data['last_name'];
-				$_SESSION['title'] = $data['title'];
 				$_SESSION['uname'] = $data['username'];
 				$_SESSION['email'] = $data['email'];
 				$_SESSION['sa'] = $data['superAdmin'];
@@ -62,8 +59,7 @@
 		if($query == '**inactive**'){
 			$sql="SELECT * FROM users WHERE inactive = 1";
 		}else{
-			$sql = "SELECT * FROM users WHERE inactive = 0"
-			. $queryB ? " AND '%$query%' IN(username,email,first_name,last_name,title)" : "";
+			$sql = $queryB ? "SELECT * FROM users WHERE inactive = 0 AND '%$query%' IN(username,email,first_name,last_name,title)" : "SELECT * FROM users WHERE inactive = 0";
 		}
 		listUsers($sql,$db);
 	}elseif(isset($_GET['listall'])){
@@ -75,8 +71,10 @@
 	$db->close();	
 	
 	function listUsers($sql,$db){
-		$result = $db->query($sql);
+		global $logged_in;
 		
+		$result = $db->query($sql);
+				
 		if($result->num_rows < 1){
 			echo 'No Users To Show';
 		}
@@ -103,10 +101,14 @@
 				<td>
 					<button class='user-view'>View User</button>";
 					if($logged_in && $_SESSION['sa'] == 1){
-						echo"
-						<button class='user-delete'>Delete</button>
-						<button class='user-modify' onclick='/nfd/admin/user.php'>Modify</button>";
+						if($row['inactive'] == 0){
+							echo"<button class='user-delete'>Deactivate</button>";
+						}else{
+							echo "<button class='user-undelete'>Reactivate</button>";
 						}
+						echo "<button class='user-modify' onclick='/nfd/admin/user.php'>Modify</button>";
+					}
+					
 				echo "</td>
 			</tr>";
 		}

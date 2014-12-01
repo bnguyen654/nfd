@@ -1,19 +1,23 @@
 <?php
-	$logged_in = isset($_COOKIE['nfd_sid']);
-	if($logged_in){
-		session_id($_COOKIE['nfd_sid']);
+	$logged_in = false; //site-wide 
+	$cookie = isset($_COOKIE['nfd_sid']);
+	if($cookie){
+		session_id($_COOKIE['nfd_sid']); //set the session id
 		session_start();
-		setcookie('nfd_sid',session_id(),time()+3600 * 24 * 30,'/','.phantastyc.tk'); //so expiry gets extended each time
+		setcookie('nfd_sid',session_id(),time()+3600 * 24 * 30,'/','.phantastyc.tk'); //so expiry gets extended each 
+		$logged_in = isset($_SESSION['uid']);
 	}
-	function getData($uid,$db){
+	function getData($uid,$db){ //return user data array from db
 		$sql = "SELECT * FROM users WHERE uid=$uid";
-		$sql2 = "SELECT * FROM user_profiles WHERE uid=$uid";
 		$result = $db->query($sql);
-		$result2 = $db->query($sql2);
 		
-		$data = array_merge($result->fetch_assoc(), $result2->fetch_assoc());
-		
-		return $data;
+		return $result->fetch_assoc();
+	}
+	
+	function getCat($cid,$db){//return category data
+		$sql = "SELECT * FROM categories WHERE cid=$cid";
+		$result = $db->query($sql);
+		return $result->fetch_assoc();
 	}
 
 ?>

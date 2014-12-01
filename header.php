@@ -6,44 +6,71 @@
 <script src="/nfd/resources/js/lib/jquery.timeago.js"></script>
 
 <script src="/nfd/resources/js/uac.js"></script>
+<script src="/nfd/resources/js/posts.js"></script>
 
 <link href="/nfd/resources/css/jquery-ui.min.css" rel="stylesheet"/>
 <link href="/nfd/resources/css/jquery-ui.structure.min.css" rel="stylesheet"/>
 <link href="/nfd/resources/css/jquery-ui.theme.min.css" rel="stylesheet"/>
 
-<link href="/nfd/resources/css/posts.css" rel="stylesheet"/>
+<link href="/nfd/resources/css/styles.css" rel="stylesheet"/>
 
-
-<div id="ucp">
 <p id="msg"></p>
-<?php
-	if(!$logged_in){
-?>
-    <form id="login-form" method="post" action="/nfd/resources/php/ajax_acct.php?login">
-    <label for="user">Username or Email</label>
-    <input type="text" name="user" id="iuser">
-    
-    <label for="pass">Password</label>
-    <input type="password" name="pass" id="ipass">
-    
-    <label for="remember">Remember Me</label>
-    <input type="checkbox" name="remember" value="yes" />
-    
-    <input type="submit" value="Login">
-    </form>
-<?php
-	}else{
-?>
-	<h2>Welcome <?php echo $_SESSION['uname']; ?>!</h2>
-    <form id="logout-form" action="/nfd/resources/php/ajax_acct.php?logout">
-    	<input type="submit" value="Logout">
-    </form>
-    <h4>Nav</h4>
-    <ul id="actions">
-    	<li><a href="/nfd/admin">Admin</a></li>
-    </ul>
-<?php
-	}
-?>
 
+<div id="login-dialog"></div>
+
+<h1 id='cat-head'>Filter by department</h1>
+
+<div id="controls">
+	<?php
+        if($logged_in && $_SESSION['sa'] == 1){
+    ?>
+	<div id="admin" class="container">
+    	<img src="resources/images/key.svg" height="50px">
+        <h2>Administration</h2>
+    </div>
+	<?php
+        }
+        if($logged_in){
+    ?>
+    <div id="new-post" class="container">
+    	<img src="resources/images/plus.svg" height="50px">
+        <h2>New Post</h2>
+    </div>
+    <div id="logout" class="container">
+    	<img src="resources/images/lock.svg" height="50px">
+      <h2>Logout</h2>
+    </div>
+    <?php
+	}else{
+	?>
+    <div id="login" class="container">
+    	<img src="resources/images/lock.svg" height="50px">
+      <h2>Login</h2>
+    </div>
+
+    <?php
+	}
+	?>
 </div>
+
+<ul id="cat">
+	<li id="sci" class='container'>
+    	<img src="resources/images/Atom.svg" height="50px">
+       <h2>Science</h2>
+    </li>
+    
+	<li id="tech" class='container'>
+    	<img src="resources/images/Pointer.svg" height="50px">
+        <h2>Technology</h2>
+    </li>
+
+	<li id="eng" class='container'>
+    	<img src="resources/images/Gear.svg" height="50px">
+        <h2>Engineering</h2>
+    </li>
+    
+	<li id="math" class='container'>
+    	<img src="resources/images/Pi.svg" height="50px">
+        <h2>Math</h2>
+    </li>
+</ul>
