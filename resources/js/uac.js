@@ -2,15 +2,10 @@ $(document).ready(function(e) {
 	var loginDialog = $('#login-dialog').dialog({
 		title:"Login",
 		autoOpen: false,
-		height:400,
-		width:800,
+		width:width * 50,
+		position:{my:'top',at:'top+50'},
 		resizable:false,
 		draggable:false,
-		position:{
-			at:'center',
-			my:'center',
-			of:window
-		},
 		modal: true,
 		buttons:[
 			{

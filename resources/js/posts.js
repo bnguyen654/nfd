@@ -1,7 +1,9 @@
 var editPid = 0;
 var editSucc = false;
+var newSucc = false;
 var newPost;
 var editDialog;
+var width;
 
 var sci = false;
 var tech = false;
@@ -60,7 +62,6 @@ function initDynamicElements(){
 				type:"POST",
 				dataType:"text",
 				success:function(response){
-					console.log(response);
 					if(response == 'deleted'){
 						reloadp();
 					}else{
@@ -97,20 +98,21 @@ function recursiveUnbind(jElement) {
 }
 
 $(function() {
-	reloadp();
+	var measure = document.createElement('div');
+    measure.style.height = '1em';
+    document.body.appendChild(measure);
+    width = measure.offsetHeight;
+    document.body.removeChild(measure);
 	
+	reloadp();
+	var topOff = 3.125*width;
 	newDialog = $("#dialog-new").dialog({
 		title:"New Post",
 		autoOpen: false,
-		height: 400,
-		width: 800,
+		width: width * 50,
+		position:{my:'top',at:'top+50'},
 		resizable:false,
 		draggable:false,
-		position:{
-			at:'center',
-			my:'center',
-			of:window
-		},
 		modal: true,
 		buttons: [
 			{
@@ -118,9 +120,10 @@ $(function() {
 				click: function(){
 					$("#new-post-form").ajaxSubmit({
 						success:function(response){
-							if(response == 'modified'){
+							if(response == 'success'){
 								reloadp();
-								newPost.dialog("close");
+								newSucc = true;
+								newDialog.dialog("close");
 							}else{
 								alert("There was an error processing your request.");
 							}
@@ -136,9 +139,14 @@ $(function() {
 			}
 			],
 			beforeClose:function(e){
-				if(confirm('Continuing will discard changes.')){
+				if(newSucc){
+					newSucc = false;
 				}else{
-					return false;
+					if(confirm('Continuing will discard changes.')){
+						newSucc = false;
+					}else{
+						return false;
+					}
 				}
 			}
 		});	
@@ -147,15 +155,10 @@ $(function() {
 	editDialog = $("#dialog-edit").dialog({
 		title:"Edit Post",
 		autoOpen: false,
-		height: 400,
-		width: 800,
+		width: width * 50,
+		position:{my:'top',at:'top+50'},
 		resizable:false,
 		draggable:false,
-		position:{
-			at:'center',
-			my:'center',
-			of:window
-		},
 		modal: true,
 		buttons: [
 			{
@@ -167,9 +170,8 @@ $(function() {
 								reloadp();
 								editPid = 0;
 								editSucc = true;
-								editDialof.dialog("close");
+								editDialog.dialog("close");
 							}else{
-								console.log(response)
 								alert("There was an error processing your request.");
 							}
 						},
@@ -225,6 +227,5 @@ $(function() {
 	$('#admin').click(function(){
 		window.open('/nfd/admin');
 	});
-
 });
 
