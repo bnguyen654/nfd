@@ -1,5 +1,3 @@
-<?php require_once "resources/php/uac.php"; ?>
-
 <script src="/nfd/resources/js/lib/jquery.min.js"></script>
 <script src="/nfd/resources/js/lib/jquery.form.min.js"></script>
 <script src="/nfd/resources/js/lib/jquery-ui.min.js"></script>

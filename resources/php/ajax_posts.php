@@ -1,6 +1,5 @@
 <?php
-	require_once "/var/ww2/db/db.php";
-	require_once "uac.php";
+	require_once "common.php";
 	
 	$db = connect_db("nfd");
 	
@@ -21,7 +20,7 @@
 		}else{
 			echo 'no pid';
 		}
-	}elseif(isset($_GET['undelete'])){ //when ?delete
+	}elseif(isset($_GET['undelete'])){ //when ?undelete
 		if(isset($_POST['pid'])){
 			$pid = $_POST['pid'];
 			if($logged_in && $_SESSION['sa'] == 1){

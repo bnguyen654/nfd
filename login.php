@@ -1,9 +1,8 @@
 <p id="msg"></p>
 <?php
-	require "/var/www/phantastyc/nfd/resources/php/uac.php";
 	if(!$logged_in){
 ?>
-    <form id="login-form" method="post" action="/nfd/resources/php/ajax_acct.php?login">
+    <form id="login-form" method="post" action="<?php echo $uacPHP . "?login";?>">
     <label for="user" class="form-element">Username or Email</label>
     <input type="text" name="user" id="iuser" class="form-element">
     

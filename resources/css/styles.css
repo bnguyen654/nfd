@@ -109,7 +109,6 @@ body{
 }
 
 .title{
-	color:white;
 	text-align:center;
 	clear:both;
 	margin:0.625em;
@@ -130,4 +129,8 @@ body{
 .form-element{
 	width:44em;
 	display:block;
+}
+
+pre{
+	font-family:inherit;
 }

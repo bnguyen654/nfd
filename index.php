@@ -1,9 +1,10 @@
-<?php require_once "header.php" ?>
+<?php require_once "resources/php/common.php" ?>
 
 <!DOCTYPE html>
 <html>
 <head>
 <title>NFD</title>
+<?php require_once $includes ?>
 </head>
 
 <body>
@@ -13,14 +14,6 @@
 
 <div id="controls">
 	<?php
-        if($logged_in && $_SESSION['sa'] == 1){
-    ?>
-	<div id="admin" class="container">
-    	<img src="resources/images/key.svg" height="50px">
-        <h2>Admin</h2>
-    </div>
-	<?php
-        }
         if($logged_in){
     ?>
     <div id="new-post" class="container">

@@ -1,6 +1,5 @@
 <?php
-	require_once "uac.php";
-	require_once "/var/ww2/db/db.php";
+	require_once "common.php";
 	
 	$db = connect_db("nfd");
 	
@@ -10,7 +9,26 @@
 		setcookie('nfd_sid','',time()-3600,'/','.phantastyc.tk');
 		echo 'success';
 	}elseif(isset($_GET['new'])){
-		
+		if($_SESSION['sa'] == 1){
+			if(isset($_POST['nUName']) && isset($_POST['nFName']) && isset($_POST['nLName']) && isset($_POST['nEmail']) && isset($_POST['nPass']) && isset($_POST['nCat']) && isset($_POST['nSA'])){
+				$uname = $_POST['nUName'];
+				$fname = $_POST['nFName'];
+				$lname = $_POST['nLName'];
+				$nemail = $_POST['nEmail'];
+				$npass = $_POST['nPass'];
+				$ncat = $_POST['nCat'];
+				$nsa = $_POST['nSA']; //new superadmin NOT National Security Agency
+				
+				$sql = "INSERT INTO users
+				(username,first_name,last_name,email,password,cid,superAdmin)
+				VALUES ('$uname','$fname','$lname','$nemail','$npass','$ncat','$nsa')";
+				$db->query($sql);
+			}else{
+				echo 'no data';
+			}
+		}else{
+			echo 'forbidden';
+		}
 	}elseif(isset($_GET['deactivate'])){
 	}elseif(isset($_GET['login'])){
 		if(isset($_POST['user']) && isset($_POST['pass'])){
